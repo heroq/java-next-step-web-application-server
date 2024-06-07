@@ -30,6 +30,8 @@
 * [interface DataOutput은 무엇인가요?](https://www.notion.so/hhero/interface-DataOutput-c39d2a1a823e4a6a94766c62125f197f?pvs=4)
 * [데코레이터 패턴이란?](https://www.notion.so/hhero/17924c0c8bfa4ee1850e854451b3331d?pvs=4)
 * [객체 조합이란게 뭔가요?](https://www.notion.so/hhero/4dd714e7bb414220bc7b298d7dabecc9?pvs=4)
+* [Thread의 private static native void registerNatives() 는 무슨 역할을 하나요 ?](https://www.notion.so/hhero/Thread-private-static-native-void-registerNatives-a6497341d03247ad86b6a86e3f78feb2?pvs=4)
+* [static { registerNatives(); } 블록은 어떤건가요 ?](https://www.notion.so/hhero/static-registerNatives-60d16b494c4644edb2938c27e09c7b61?pvs=4)
 ### 요구사항 2 - get 방식으로 회원가입
 * 
 

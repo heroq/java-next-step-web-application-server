@@ -30,7 +30,7 @@ public class RequestHandler extends Thread {
             // TODO 사용자 요청에 대한 처리는 이 곳에 구현하면 된다.
             DataOutputStream dos = new DataOutputStream(out);
 
-            File file = new File("요구사항1/webapp/index.html");
+            File file = new File("requirements-1/webapp/index.html");
             byte[] bytes = ByteStreams.toByteArray(new FileInputStream(file));
             response200Header(dos, bytes.length);
             responseBody(dos, bytes);
