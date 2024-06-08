@@ -32,6 +32,11 @@
 * [객체 조합이란게 뭔가요?](https://www.notion.so/hhero/4dd714e7bb414220bc7b298d7dabecc9?pvs=4)
 * [Thread의 private static native void registerNatives() 는 무슨 역할을 하나요 ?](https://www.notion.so/hhero/Thread-private-static-native-void-registerNatives-a6497341d03247ad86b6a86e3f78feb2?pvs=4)
 * [static { registerNatives(); } 블록은 어떤건가요 ?](https://www.notion.so/hhero/static-registerNatives-60d16b494c4644edb2938c27e09c7b61?pvs=4)
+* [Thread하고 Runnable의 차이점](https://www.notion.so/hhero/Thread-Runnable-04f468f3294d487ba01c025017827df4?pvs=4)
+* [File 클래스는 어떻게 되어 있나요?](https://www.notion.so/hhero/File-cd7b2927c2cf448fbae527e3bf433ead?pvs=4)
+* [FileInputStream에서 생성자에서 File을 받아서 뭘 하나요?](https://www.notion.so/hhero/FileInputStream-File-13111d8d49444315a5d580adbddf909f?pvs=4)
+* [SecurityManager는 무슨 역할을 하나요?](https://www.notion.so/hhero/SecurityManager-dda262ad6fa849ccb6664bd788bab8e9?pvs=4)
+
 ### 요구사항 2 - get 방식으로 회원가입
 * 
 
