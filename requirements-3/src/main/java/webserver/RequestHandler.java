@@ -57,23 +57,32 @@ public class RequestHandler extends Thread {
 
             if(request[0].equals("GET") && request[1].contains("?")) {
                 requestBody = request[1].split("\\?")[1];
+            } else if(request[0].equals("POST")) {
+                // Content-Length 헤더를 통해 본문의 길이를 파악
+                String contentLengthValue = header.get("Content-Length");
+                if (contentLengthValue != null) {
+                    int contentLength = Integer.parseInt(contentLengthValue);
+                    char[] body = new char[contentLength];
+                    bufferedReader.read(body, 0, contentLength);
+                    requestBody = new String(body);
+                }
             }
 
             // 요청에 따른 응답 변경
 
-            File file = new File("requirements-2/webapp/index.html");
+            File file = new File("requirements-3/webapp/index.html");
 
             if(header.get("Sec-Fetch-Dest").equals("document")) {
 
                 if(request[1].equals("/")) request[1] = "/index.html";
-                if(request[1].contains("/user/create") && (request[0].equals("GET"))) {
+                if(request[1].contains("/user/create") && (request[0].equals("GET") || request[0].equals("POST"))) {
                     RequestCreate.create(HttpRequestUtils.parseQueryString(requestBody));
                     System.out.println(DataBase.findAll());
                     response200Header(dos, 0);
                     return;
                 }
 
-                file = new File("requirements-2/webapp" + request[1]);
+                file = new File("requirements-3/webapp" + request[1]);
             }
 
              // 응답
