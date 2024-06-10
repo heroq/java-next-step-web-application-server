@@ -6,5 +6,6 @@
 /.idea
 *.iml
 .DS_Store
-/requirements-1/build/
-/requirements-1/.gradle/
+**/build/
+**/.gradle/
+*.class

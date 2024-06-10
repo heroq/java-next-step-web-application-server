@@ -21,8 +21,8 @@ dependencies {
 }
 
 group = 'org.nhnnext'
-version = '1.0'
-description = 'requirements-1'
+version = '2.0'
+description = 'requirements-2'
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 publishing {
