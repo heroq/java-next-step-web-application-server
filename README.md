@@ -40,10 +40,12 @@
 ### 요구사항 2 - get 방식으로 회원가입
 * [Socket에서 QueryString 받기](https://www.notion.so/hhero/Socket-InputStream-73a3c00cb8cf460bb032b933bedbbf76?pvs=4)
 * [HTTP Request Header 정보](https://www.notion.so/hhero/HTTP-Request-Header-8c5b9046bd5a4b3e8ba34d929eba4b52?pvs=4)
+* [HTTP GET Method란 무엇인가요?](https://www.notion.so/hhero/HTTP-GET-Method-da3b872f21ff4bd08f777d8e297ad9d5?pvs=4)
 
 ### 요구사항 3 - post 방식으로 회원가입
 * [Socket에서 Body 받기](https://www.notion.so/hhero/Socket-Body-0390e7ed4071430c891d89326a99f257?pvs=4)
 * [get은 응답헤더를 읽는데 post는 대기중으로 뜨는 이유는 뭔가요?](https://www.notion.so/hhero/get-post-e22b1ecdff2b40858d6b209f3b38999f?pvs=4)
+* [HTTP POST Method란 무엇인가요?](https://www.notion.so/hhero/HTTP-POST-Method-9a4395d5bd2c48f384e44d212e0ea74c?pvs=4)
 
 ### 요구사항 4 - redirect 방식으로 이동
 * 
