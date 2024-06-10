@@ -51,6 +51,7 @@
 * [GET은 응답헤더를 읽는데 POST는 대기중으로 뜨는 이유는 뭔가요?](https://www.notion.so/hhero/get-post-e22b1ecdff2b40858d6b209f3b38999f?pvs=4)
 * [HTTP POST Method란 무엇인가요?](https://www.notion.so/hhero/HTTP-POST-Method-9a4395d5bd2c48f384e44d212e0ea74c?pvs=4)
 * [HTTP Request POST Body를 Web Server에서 받을 때 왜 꼭 Length에 맞게 읽어야하나요?](https://www.notion.so/hhero/HTTP-Request-POST-Body-Web-Server-Length-2575a7e3e8364858a8905e6ee395ac50?pvs=4)
+* [HTTP POST는 왜 GET보다 안전하다고 하나요?](https://www.notion.so/hhero/HTTP-POST-GET-81cfca66a10e40efbed42d2f75de311a?pvs=4)
 * [HTTPS가 어떻게 암호화하고 탈취는 어떻게 해서 확인을 한다는건가요 ?](https://www.notion.so/hhero/HTTPS-ff7b4f72167d48b68c63169ba3b66609?pvs=4)
 * [HTTP 데이터 탈취 예시가 있나요 ?](https://www.notion.so/hhero/HTTP-d77947d8cd5b4aec88a19017ef23e482?pvs=4)
 
