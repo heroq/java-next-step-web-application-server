@@ -38,7 +38,7 @@
 * [SecurityManager는 무슨 역할을 하나요?](https://www.notion.so/hhero/SecurityManager-dda262ad6fa849ccb6664bd788bab8e9?pvs=4)
 
 ### 요구사항 2 - get 방식으로 회원가입
-* 
+* [Socket에서 InputStream을 어떤 방식으로 읽나요?](https://www.notion.so/hhero/Socket-InputStream-73a3c00cb8cf460bb032b933bedbbf76?pvs=4)
 
 ### 요구사항 3 - post 방식으로 회원가입
 * 
