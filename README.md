@@ -45,6 +45,7 @@
 * [Sec-Fetch-Dest 헤더를 사용하여 요청을 식별하는게 정확한 방법 인가요?](https://www.notion.so/hhero/Sec-Fetch-Dest-74ebfbdcb9254845a6d7557522a5ea46?pvs=4)
 * [클라이언트가 GET으로 웹 서버에 요청 했을 때 어떻게 웹 서버가 요청을 받는거죠 ?](https://www.notion.so/hhero/GET-0fc8bfc808b240b2a53eca131dd1bae2?pvs=4)
 * [왜 프리플라이트는 TCP 핸드 쉐이크를 안하죠 ?](https://www.notion.so/hhero/TCP-84480d229ffd474b9c23546a84e51187?pvs=4)
+* [Connection: keep-alive 연결을 유지한다는게 어떤 개념인가요?](https://www.notion.so/hhero/Connection-keep-alive-1a660255ae3448d69ee5cf710af4ba05?pvs=4)
 
 ### 요구사항 3 - post 방식으로 회원가입
 * [Socket에서 Body 받기](https://www.notion.so/hhero/Socket-Body-0390e7ed4071430c891d89326a99f257?pvs=4)
