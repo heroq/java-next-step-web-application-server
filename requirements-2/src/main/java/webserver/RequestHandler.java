@@ -68,7 +68,6 @@ public class RequestHandler extends Thread {
                 if(request[1].equals("/")) request[1] = "/index.html";
                 if(request[1].contains("/user/create") && (request[0].equals("GET"))) {
                     RequestCreate.create(HttpRequestUtils.parseQueryString(requestBody));
-                    System.out.println(DataBase.findAll());
                     response200Header(dos, 0);
                     return;
                 }
