@@ -41,11 +41,16 @@
 * [Socket에서 QueryString 받기](https://www.notion.so/hhero/Socket-InputStream-73a3c00cb8cf460bb032b933bedbbf76?pvs=4)
 * [HTTP Request Header 정보](https://www.notion.so/hhero/HTTP-Request-Header-8c5b9046bd5a4b3e8ba34d929eba4b52?pvs=4)
 * [HTTP GET Method란 무엇인가요?](https://www.notion.so/hhero/HTTP-GET-Method-da3b872f21ff4bd08f777d8e297ad9d5?pvs=4)
+* [private static Map<String, User> users = Maps.newHashMap()는 어떤식으로 작동이 되는건가요?](https://www.notion.so/hhero/private-static-Map-String-User-users-Maps-newHashMap-8c02b720295c413786ef7fb74f41dba5?pvs=4)
+* [Sec-Fetch-Dest 헤더를 사용하여 요청을 식별하는게 정확한 방법 인가요?](https://www.notion.so/hhero/Sec-Fetch-Dest-74ebfbdcb9254845a6d7557522a5ea46?pvs=4)
+* [클라이언트가 GET으로 웹 서버에 요청 했을 때 어떻게 웹 서버가 요청을 받는거죠 ?](https://www.notion.so/hhero/GET-0fc8bfc808b240b2a53eca131dd1bae2?pvs=4)
+* [왜 프리플라이트는 TCP 핸드 쉐이크를 안하죠 ?](https://www.notion.so/hhero/TCP-84480d229ffd474b9c23546a84e51187?pvs=4)
 
 ### 요구사항 3 - post 방식으로 회원가입
 * [Socket에서 Body 받기](https://www.notion.so/hhero/Socket-Body-0390e7ed4071430c891d89326a99f257?pvs=4)
-* [get은 응답헤더를 읽는데 post는 대기중으로 뜨는 이유는 뭔가요?](https://www.notion.so/hhero/get-post-e22b1ecdff2b40858d6b209f3b38999f?pvs=4)
+* [GET은 응답헤더를 읽는데 POST는 대기중으로 뜨는 이유는 뭔가요?](https://www.notion.so/hhero/get-post-e22b1ecdff2b40858d6b209f3b38999f?pvs=4)
 * [HTTP POST Method란 무엇인가요?](https://www.notion.so/hhero/HTTP-POST-Method-9a4395d5bd2c48f384e44d212e0ea74c?pvs=4)
+* [HTTP Request POST Body를 Web Server에서 받을 때 왜 꼭 Length에 맞게 읽어야하나요?](https://www.notion.so/hhero/HTTP-Request-POST-Body-Web-Server-Length-2575a7e3e8364858a8905e6ee395ac50?pvs=4)
 
 ### 요구사항 4 - redirect 방식으로 이동
 * 

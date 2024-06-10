@@ -52,7 +52,6 @@ public class RequestHandler extends Thread {
             while(!(line = bufferedReader.readLine()).isEmpty()) {
                 HttpRequestUtils.Pair pair = HttpRequestUtils.parseHeader(line);
                 header.put(pair.getKey(), pair.getValue());
-                System.out.println(line);
             }
 
             if(request[0].equals("GET") && request[1].contains("?")) {
@@ -77,7 +76,6 @@ public class RequestHandler extends Thread {
                 if(request[1].equals("/")) request[1] = "/index.html";
                 if(request[1].contains("/user/create") && (request[0].equals("GET") || request[0].equals("POST"))) {
                     RequestCreate.create(HttpRequestUtils.parseQueryString(requestBody));
-                    System.out.println(DataBase.findAll());
                     response200Header(dos, 0);
                     return;
                 }

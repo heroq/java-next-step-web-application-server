@@ -52,7 +52,6 @@ public class RequestHandler extends Thread {
             while(!(line = bufferedReader.readLine()).isEmpty()) {
                 HttpRequestUtils.Pair pair = HttpRequestUtils.parseHeader(line);
                 header.put(pair.getKey(), pair.getValue());
-                System.out.println(line);
             }
 
             if(request[0].equals("GET") && request[1].contains("?")) {
