@@ -23,6 +23,7 @@ import org.slf4j.LoggerFactory;
 import com.google.common.io.ByteStreams;
 
 import db.DataBase;
+import model.User;
 import util.HttpRequestUtils;
 
 public class RequestHandler extends Thread {
@@ -75,7 +76,7 @@ public class RequestHandler extends Thread {
 
                 if(request[1].equals("/")) request[1] = "/index.html";
                 if(request[1].contains("/user/create") && (request[0].equals("GET") || request[0].equals("POST"))) {
-                    RequestCreate.create(HttpRequestUtils.parseQueryString(requestBody));
+                    User.create(HttpRequestUtils.parseQueryString(requestBody));
                     response200Header(dos, 0);
                     return;
                 }
