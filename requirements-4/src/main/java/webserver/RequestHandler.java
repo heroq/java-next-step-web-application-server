@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -72,12 +73,13 @@ public class RequestHandler extends Thread {
 
             File file = new File("requirements-3/webapp/index.html");
 
+            System.out.println(header.get("Sec-Fetch-Dest"));
             if(header.get("Sec-Fetch-Dest").equals("document")) {
 
                 if(request[1].equals("/")) request[1] = "/index.html";
                 if(request[1].contains("/user/create") && (request[0].equals("GET") || request[0].equals("POST"))) {
                     User.create(HttpRequestUtils.parseQueryString(requestBody));
-                    response200Header(dos, 0);
+                    response302Header(dos, 0);
                     return;
                 }
 
@@ -85,7 +87,7 @@ public class RequestHandler extends Thread {
             }
 
              // 응답
-            byte[] bytes = ByteStreams.toByteArray(new FileInputStream(file));
+            byte[] bytes = Files.readAllBytes(file.toPath());
             response200Header(dos, bytes.length);
             responseBody(dos, bytes);
         } catch (IOException e) {
@@ -98,6 +100,16 @@ public class RequestHandler extends Thread {
             dos.writeBytes("HTTP/1.1 200 OK \r\n");
             dos.writeBytes("Content-Type: text/html;charset=utf-8\r\n");
             dos.writeBytes("Content-Length: " + lengthOfBodyContent + "\r\n");
+            dos.writeBytes("\r\n");
+        } catch (IOException e) {
+            log.error(e.getMessage());
+        }
+    }
+
+    private void response302Header(DataOutputStream dos, int lengthOfBodyContent) {
+        try {
+            dos.writeBytes("HTTP/1.1 302 Found \r\n");
+            dos.writeBytes("Location: /\r\n");
             dos.writeBytes("\r\n");
         } catch (IOException e) {
             log.error(e.getMessage());
