@@ -79,7 +79,7 @@ public class RequestHandler extends Thread {
                 if(request[1].equals("/")) request[1] = "/index.html";
                 if(request[1].contains("/user/create") && (request[0].equals("GET") || request[0].equals("POST"))) {
                     User.create(HttpRequestUtils.parseQueryString(requestBody));
-                    response302Header(dos, 0);
+                    response302Header(dos, "/");
                     return;
                 }
 
@@ -106,10 +106,10 @@ public class RequestHandler extends Thread {
         }
     }
 
-    private void response302Header(DataOutputStream dos, int lengthOfBodyContent) {
+    private void response302Header(DataOutputStream dos, String url) {
         try {
             dos.writeBytes("HTTP/1.1 302 Found \r\n");
-            dos.writeBytes("Location: /\r\n");
+            dos.writeBytes("Location: " + url + "\r\n");
             dos.writeBytes("\r\n");
         } catch (IOException e) {
             log.error(e.getMessage());
