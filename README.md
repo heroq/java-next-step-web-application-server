@@ -53,7 +53,9 @@
 * [Body 불러온 후 Request 첫번째 줄 NULL 오류](https://www.notion.so/hhero/Body-Request-NULL-86617a542d224cc6971e92db35387a28?pvs=4)
 
 ### 요구사항 5 - cookie
-* 
+* [HTTP Cookie가 생긴 이유는 뭔가요 ?](https://www.notion.so/hhero/HTTP-Cookie-62820fb4a8f94daeb859fe9eb0b6079a?pvs=4)
+* [HTTP Cookie의 유래는 뭔가요 ?](https://www.notion.so/hhero/HTTP-Cookie-666384284f3a4c1584d4bc5d02d72c43?pvs=4)
+* [HTTP  Session은 어떻게 작동하는 건가요 ?](https://www.notion.so/hhero/HTTP-Session-13b74a6df0884366a5ff036a8022caeb?pvs=4)
 
 ### 요구사항 6 - stylesheet 적용
 * 
