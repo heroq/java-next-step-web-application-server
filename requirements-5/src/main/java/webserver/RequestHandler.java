@@ -82,15 +82,22 @@ public class RequestHandler extends Thread {
 
                 if (request[1].equals("/")) {
                     request[1] = "/index.html";
+
                 } else if(request[1].contains("/user/create") && (request[0].equals("GET") || request[0].equals("POST"))) {
                     User.create(requestMap);
                     response302Header(dos, "/");
                     return;
+
                 } else if(request[1].contains("/user/login") && request[0].equals("POST")) {
                     User user = DataBase.findUserById(requestMap.getOrDefault("userId", ""));
-                    response302Header(dos, "/",
-                        "logined="+(user != null && user.getPassword().equals(requestMap.get("password"))));
-					return;
+
+                    if(user != null && user.getPassword().equals(requestMap.get("password"))) {
+                        response302Header(dos, "/", "logined=true");
+                        return;
+                    }
+
+                    response302Header(dos, "/user/login_failed.html", "logined=false");
+                    return;
                 }
 
                 file = new File("requirements-5/webapp" + request[1]);
