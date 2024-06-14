@@ -50,6 +50,7 @@
 ### 요구사항 4 - redirect 방식으로 이동
 * [HTTP 상태 코드 유래](https://www.notion.so/hhero/HTTP-0dcc9eed723242b0906af0b88054bcb1?pvs=4)
 * [Content-Type, Cache-Control, Authorization, Set-Cookie에 대해](https://www.notion.so/hhero/Content-Type-Cache-Control-Authorization-Set-Cookie-a5ad33e43ad44f559dccd3aabe9065b7?pvs=4)
+* [Body 불러온 후 Request 첫번째 줄 NULL 오류](https://www.notion.so/hhero/Body-Request-NULL-86617a542d224cc6971e92db35387a28?pvs=4)
 
 ### 요구사항 5 - cookie
 * 
