@@ -7,6 +7,8 @@
 * [maven to gradle로 변환 후 서버 실행](https://www.notion.so/hhero/maven-to-gradle-271a580ec4db4dc5bc089a1a4844916c?pvs=4)
 * [gradle .gradle 폴더 차이](https://www.notion.so/hhero/gradle-gradle-eecf7b1578654f7a91d54953764cd905?pvs=4)
 * [WebServer, RequestHandler 코드 분석](https://www.notion.so/hhero/WebServer-RequestHandler-b5347b0cf9df4621bab971729365642e?pvs=4)
+* [새로운 스레드가 생성 될 때마다 포트가 바뀌는 이유는 뭔가요 ?](https://www.notion.so/hhero/e528090919fb4517bb0aae47015f40ff?pvs=4)
+* [동적 포트를 하는 이유는 뭔가요?](https://www.notion.so/hhero/d52788e03e054d3ab7edd5e46dbc6791?pvs=4)
 * [웹 서버 접근 시 2번 로그가 찍히는 이유](https://www.notion.so/hhero/2-abc7bca9ae8c43e5aa43d0e8ee3e8b4c?pvs=4)
 * [localhost:8080 접근 시 index.html 응답하기](https://www.notion.so/hhero/localhost-8080-index-html-847fc4538bc14c00bb62c84cd87aa2e4?pvs=4)
 * [thread에서 InputStream, OutputStream in하고 out의 역할은 무엇인가요?](https://www.notion.so/hhero/thread-InputStream-OutputStream-in-out-0e24c29c1aa8453ea3c8c2181fde8170?pvs=4)
