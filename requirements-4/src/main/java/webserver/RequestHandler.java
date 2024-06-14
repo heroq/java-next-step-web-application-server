@@ -71,9 +71,8 @@ public class RequestHandler extends Thread {
 
             // 요청에 따른 응답 변경
 
-            File file = new File("requirements-3/webapp/index.html");
+            File file = new File("requirements-4/webapp/index.html");
 
-            System.out.println(header.get("Sec-Fetch-Dest"));
             if(header.get("Sec-Fetch-Dest").equals("document")) {
 
                 if(request[1].equals("/")) request[1] = "/index.html";
@@ -83,7 +82,7 @@ public class RequestHandler extends Thread {
                     return;
                 }
 
-                file = new File("requirements-3/webapp" + request[1]);
+                file = new File("requirements-4/webapp" + request[1]);
             }
 
              // 응답

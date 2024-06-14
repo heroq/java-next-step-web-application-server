@@ -4,6 +4,7 @@ import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.DataInput;
 import java.io.DataInputStream;
+import java.io.DataOutput;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -47,6 +48,8 @@ public class RequestHandler extends Thread {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in));
             String line, requestBody = "", requestLine = bufferedReader.readLine();
 
+            if(requestLine == null) return;
+
             // 0 METHOD, 1 URL, 2 HTTP VERSION
             String[] request = requestLine.split(" ");
 
@@ -71,19 +74,26 @@ public class RequestHandler extends Thread {
 
             // 요청에 따른 응답 변경
 
-            File file = new File("requirements-3/webapp/index.html");
+            File file = new File("requirements-5/webapp/index.html");
 
-            System.out.println(header.get("Sec-Fetch-Dest"));
             if(header.get("Sec-Fetch-Dest").equals("document")) {
 
-                if(request[1].equals("/")) request[1] = "/index.html";
-                if(request[1].contains("/user/create") && (request[0].equals("GET") || request[0].equals("POST"))) {
-                    User.create(HttpRequestUtils.parseQueryString(requestBody));
+                Map<String, String> requestMap = HttpRequestUtils.parseQueryString(requestBody);
+
+                if (request[1].equals("/")) {
+                    request[1] = "/index.html";
+                } else if(request[1].contains("/user/create") && (request[0].equals("GET") || request[0].equals("POST"))) {
+                    User.create(requestMap);
                     response302Header(dos, "/");
                     return;
+                } else if(request[1].contains("/user/login") && request[0].equals("POST")) {
+                    User user = DataBase.findUserById(requestMap.getOrDefault("userId", ""));
+                    response302Header(dos, "/",
+                        "logined="+(user != null && user.getPassword().equals(requestMap.get("password"))));
+					return;
                 }
 
-                file = new File("requirements-3/webapp" + request[1]);
+                file = new File("requirements-5/webapp" + request[1]);
             }
 
              // 응답
@@ -96,10 +106,15 @@ public class RequestHandler extends Thread {
     }
 
     private void response200Header(DataOutputStream dos, int lengthOfBodyContent) {
+        response200Header(dos, lengthOfBodyContent, null);
+    }
+
+    private void response200Header(DataOutputStream dos, int lengthOfBodyContent, String cookieValue) {
         try {
             dos.writeBytes("HTTP/1.1 200 OK \r\n");
             dos.writeBytes("Content-Type: text/html;charset=utf-8\r\n");
             dos.writeBytes("Content-Length: " + lengthOfBodyContent + "\r\n");
+            if(cookieValue != null) dos.writeBytes("Set-Cookie: " + cookieValue + "; Path=/ \r\n");
             dos.writeBytes("\r\n");
         } catch (IOException e) {
             log.error(e.getMessage());
@@ -107,9 +122,14 @@ public class RequestHandler extends Thread {
     }
 
     private void response302Header(DataOutputStream dos, String url) {
+        response302Header(dos, url, null);
+    }
+
+    private void response302Header(DataOutputStream dos, String url, String cookieValue) {
         try {
             dos.writeBytes("HTTP/1.1 302 Found \r\n");
             dos.writeBytes("Location: " + url + "\r\n");
+            if(cookieValue != null) dos.writeBytes("Set-Cookie: " + cookieValue + "; Path=/ \r\n");
             dos.writeBytes("\r\n");
         } catch (IOException e) {
             log.error(e.getMessage());
