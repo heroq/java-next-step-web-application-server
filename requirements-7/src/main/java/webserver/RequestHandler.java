@@ -48,7 +48,7 @@ public class RequestHandler extends Thread {
 
             // 요청
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in));
-            String line, requestBody = "", requestLine = bufferedReader.readLine();
+            String line, requestBody = "", requestLine = bufferedReader.readLine(), contentType = "";
 
             if(requestLine == null) return;
 
@@ -68,6 +68,7 @@ public class RequestHandler extends Thread {
 
             if(request[0].equals("GET") && request[1].contains("?")) {
                 requestBody = request[1].split("\\?")[1];
+
             } else if(request[0].equals("POST")) {
                 // Content-Length 헤더를 통해 본문의 길이를 파악
                 String contentLengthValue = header.get("Content-Length");
@@ -81,7 +82,7 @@ public class RequestHandler extends Thread {
 
             // 요청에 따른 응답 변경
 
-            File file = new File("requirements-6/webapp/index.html");
+            File file = new File("requirements-7/webapp/index.html");
 
             if(header.get("Sec-Fetch-Dest").equals("document")) {
 
@@ -105,7 +106,6 @@ public class RequestHandler extends Thread {
 
                     response302Header(dos, "/user/login_failed.html", "logined=false");
                     return;
-
                 } else if(request[1].contains("/user/list") && request[0].equals("GET")) {
                     if(cookie.get("logined") == null || cookie.get("logined").equals("false")) {
                         response302Header(dos, "/user/login.html");
@@ -134,31 +134,39 @@ public class RequestHandler extends Thread {
                     // String 객체에서 replace 메소드를 호출하면 원본 문자열이 변경되지 않고, 변경된 새로운 문자열이 반환
                     htmlContent = htmlContent.replace("<!-- DATA_LIST -->", stringBuilder.toString());
                     byte[] bytes = htmlContent.getBytes();
-                    response200Header(dos, bytes.length);
+                    response200Header(dos, bytes.length, "text/html;charset=utf-8");
                     responseBody(dos, bytes);
                     return;
                 }
 
-                file = new File("requirements-6/webapp" + request[1]);
+
+
+                file = new File("requirements-7/webapp" + request[1]);
+                contentType = "text/html;charset=utf-8";
+
+            } else if(header.get("Sec-Fetch-Dest").equals("style")) {
+
+                file = new File("requirements-7/webapp" + request[1]);
+                contentType = "text/css";
             }
 
              // 응답
             byte[] bytes = Files.readAllBytes(file.toPath());
-            response200Header(dos, bytes.length);
+            response200Header(dos, bytes.length, contentType);
             responseBody(dos, bytes);
         } catch (IOException e) {
             log.error(e.getMessage());
         }
     }
 
-    private void response200Header(DataOutputStream dos, int lengthOfBodyContent) {
-        response200Header(dos, lengthOfBodyContent, null);
+    private void response200Header(DataOutputStream dos, int lengthOfBodyContent, String contentType) {
+        response200Header(dos, lengthOfBodyContent, null, contentType);
     }
 
-    private void response200Header(DataOutputStream dos, int lengthOfBodyContent, String cookieValue) {
+    private void response200Header(DataOutputStream dos, int lengthOfBodyContent, String cookieValue, String contentType) {
         try {
             dos.writeBytes("HTTP/1.1 200 OK \r\n");
-            dos.writeBytes("Content-Type: text/html;charset=utf-8\r\n");
+            dos.writeBytes("Content-Type: " + contentType + "\r\n");
             dos.writeBytes("Content-Length: " + lengthOfBodyContent + "\r\n");
             if(cookieValue != null) dos.writeBytes("Set-Cookie: " + cookieValue + "; Path=/ \r\n");
             dos.writeBytes("\r\n");
