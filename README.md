@@ -46,7 +46,8 @@
 * [HTTP 데이터 탈취 예시가 있나요 ?](https://www.notion.so/hhero/HTTP-d77947d8cd5b4aec88a19017ef23e482?pvs=4)
 
 ### 요구사항 4 - redirect 방식으로 이동
-* 
+* [HTTP 상태 코드 유래](https://www.notion.so/hhero/HTTP-0dcc9eed723242b0906af0b88054bcb1?pvs=4)
+* [Content-Type, Cache-Control, Authorization, Set-Cookie에 대해](https://www.notion.so/hhero/Content-Type-Cache-Control-Authorization-Set-Cookie-a5ad33e43ad44f559dccd3aabe9065b7?pvs=4)
 
 ### 요구사항 5 - cookie
 * 
