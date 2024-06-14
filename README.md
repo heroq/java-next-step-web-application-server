@@ -58,7 +58,4 @@
 * [HTTP  Session은 어떻게 작동하는 건가요 ?](https://www.notion.so/hhero/HTTP-Session-13b74a6df0884366a5ff036a8022caeb?pvs=4)
 
 ### 요구사항 6 - stylesheet 적용
-* 
-
-### heroku 서버에 배포 후
-* 
+*
