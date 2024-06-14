@@ -139,15 +139,17 @@ public class RequestHandler extends Thread {
                     return;
                 }
 
-
-
                 file = new File("requirements-7/webapp" + request[1]);
                 contentType = "text/html;charset=utf-8";
 
             } else if(header.get("Sec-Fetch-Dest").equals("style")) {
-
                 file = new File("requirements-7/webapp" + request[1]);
                 contentType = "text/css";
+
+            } else if(header.get("Sec-Fetch-Dest").equals("script")) {
+                file = new File("requirements-7/webapp" + request[1]);
+                contentType = "text/javascript";
+
             }
 
              // 응답
