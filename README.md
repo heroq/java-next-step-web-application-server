@@ -57,5 +57,9 @@
 * [HTTP Cookie의 유래는 뭔가요 ?](https://www.notion.so/hhero/HTTP-Cookie-666384284f3a4c1584d4bc5d02d72c43?pvs=4)
 * [HTTP  Session은 어떻게 작동하는 건가요 ?](https://www.notion.so/hhero/HTTP-Session-13b74a6df0884366a5ff036a8022caeb?pvs=4)
 
-### 요구사항 6 - stylesheet 적용
+### 요구사항 6 - 사용자 목록 출력
+* [AtomicInteger이란 어떤 객체 인가요 ?](https://www.notion.so/hhero/AtomicInteger-2e03ffc3610c4ee694304412b83251d9?pvs=4)
+* [volatile 지시어는 무엇인가요 ?](https://www.notion.so/hhero/volatile-2d83dc8067e545548762134abe3b68d2?pvs=4)
+
+### 요구사항 7 - stylesheet 적용
 *
