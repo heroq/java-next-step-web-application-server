@@ -1,30 +1,22 @@
 package webserver;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.DataInput;
-import java.io.DataInputStream;
-import java.io.DataOutput;
 import java.io.DataOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.google.common.io.ByteStreams;
 
 import db.DataBase;
 import model.User;
@@ -120,16 +112,17 @@ public class RequestHandler extends Thread {
                     AtomicInteger index = new AtomicInteger(1);
                     DataBase.findAll().forEach((k) -> {
                         int currentIndex = index.getAndIncrement();
-                        stringBuilder.append("""
-                                <tr>
-                                    <th scope="row">%s</th>
-                                    <td>%s</td>
-                                    <td>%s</td>
-                                    <td>%s</td>
-                                    <td><a href="#" class="btn btn-success" role="button">수정</a></td>
-                                </tr>
-                            """.formatted(currentIndex, k.getUserId(), k.getName(), URLDecoder.decode(k.getEmail())));
-                    });
+						stringBuilder.append("""
+								<tr>
+									<th scope="row">%s</th>
+									<td>%s</td>
+									<td>%s</td>
+									<td>%s</td>
+									<td><a href="#" class="btn btn-success" role="button">수정</a></td>
+								</tr>
+							""".formatted(currentIndex, k.getUserId(), k.getName(), URLDecoder.decode(k.getEmail(),
+							StandardCharsets.UTF_8)));
+					});
 
                     // String 객체에서 replace 메소드를 호출하면 원본 문자열이 변경되지 않고, 변경된 새로운 문자열이 반환
                     htmlContent = htmlContent.replace("<!-- DATA_LIST -->", stringBuilder.toString());
@@ -162,15 +155,10 @@ public class RequestHandler extends Thread {
     }
 
     private void response200Header(DataOutputStream dos, int lengthOfBodyContent, String contentType) {
-        response200Header(dos, lengthOfBodyContent, null, contentType);
-    }
-
-    private void response200Header(DataOutputStream dos, int lengthOfBodyContent, String cookieValue, String contentType) {
         try {
             dos.writeBytes("HTTP/1.1 200 OK \r\n");
             dos.writeBytes("Content-Type: " + contentType + "\r\n");
             dos.writeBytes("Content-Length: " + lengthOfBodyContent + "\r\n");
-            if(cookieValue != null) dos.writeBytes("Set-Cookie: " + cookieValue + "; Path=/ \r\n");
             dos.writeBytes("\r\n");
         } catch (IOException e) {
             log.error(e.getMessage());
