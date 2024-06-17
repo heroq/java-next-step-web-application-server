@@ -2,7 +2,6 @@ package webserver;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -26,9 +25,8 @@ public class WebServerTest {
 	}
 
 	@Test
-	void testSocketConnection() throws IOException {
+	void testSocketConnection() {
 		assertNotNull(clientSocket);
 		assertTrue(clientSocket.isConnected());
-		clientSocket.close();
 	}
 }
