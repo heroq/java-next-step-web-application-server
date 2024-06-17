@@ -67,4 +67,4 @@
 * [RFC란 무엇인가요?](https://www.notion.so/hhero/RFC-0a19bc9c012e4d8698580ab845ebb302?pvs=4)
 
 ### JUnit5 테스트 코드 작성
-* 
+* [JUnit5 시작하기](https://www.notion.so/hhero/JUnit5-019bc3538d9f433aad8c0fb2e969a7ec?pvs=4)
