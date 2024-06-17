@@ -63,7 +63,8 @@
 * [Map의 forEach는 어떻게 작동 되는건가요 ?](https://www.notion.so/hhero/Map-forEach-30ac849d3ffa4ec6a588504d4b10a8e9?pvs=4)
 
 ### 요구사항 7 - stylesheet 적용
-*
+* [Content-Type은 어떤건가요 ?](https://www.notion.so/hhero/Content-Type-7a21058b79894f78950271d3ec692a6d?pvs=4)
+* [RFC란 무엇인가요?](https://www.notion.so/hhero/RFC-0a19bc9c012e4d8698580ab845ebb302?pvs=4)
 
 ### JUnit5 테스트 코드 작성
 * 
