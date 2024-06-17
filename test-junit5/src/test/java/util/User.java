@@ -32,4 +32,10 @@ public class User {
 
 		assertEquals(DataBase.findUserById("nextstepId"), newUser);
 	}
+
+	@Test
+	public void create_null() {
+		Map<String, String> user = new HashMap<>();
+		assertTrue(user.isEmpty());
+	}
 }
