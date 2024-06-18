@@ -7,19 +7,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.Socket;
-import java.net.URLDecoder;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import db.DataBase;
-import model.User;
 import util.HttpRequestUtils;
 
 public class RequestHandler extends Thread {
@@ -27,6 +25,7 @@ public class RequestHandler extends Thread {
 
     private final Socket connection;
     private final ResponseHandler responseHandler = new ResponseHandler();
+    private final RequestList requestList = new RequestList();
 
     private final String moduleName = "test-junit5";
 
@@ -46,7 +45,6 @@ public class RequestHandler extends Thread {
         log.debug("New Client Connect! Connected IP : {}, Port : {}", connection.getInetAddress(), connection.getPort());
 
         try (InputStream in = connection.getInputStream(); OutputStream out = connection.getOutputStream()) {
-            // TODO 사용자 요청에 대한 처리는 이 곳에 구현하면 된다.
             DataOutputStream dos = new DataOutputStream(out);
 
             // 요청
@@ -81,58 +79,35 @@ public class RequestHandler extends Thread {
             // 요청에 따른 응답 변경
             contentType = ResponseContentType.getContentType(header.get("Sec-Fetch-Dest"));
 
-            if(header.get("Sec-Fetch-Dest").equals("document")) {
+            if(contentType.equals(ResponseContentType.HTML.contentType())) {
                 Map<String, String> requestMap = HttpRequestUtils.parseQueryString(requestBody);
 
-                if (request[1].equals(RequestURL.INDEX.getUrl())) {
-                    request[1] = "/index.html";
+                for (Method method : RequestList.class.getDeclaredMethods()) {
+                    if (method.isAnnotationPresent(RequestMapping.class)) {
+                        Annotation[] a = method.getDeclaredAnnotations();
+                        for(Annotation annotation : a) {
+                            if(annotation instanceof RequestMapping) {
+                                RequestMapping metadata = (RequestMapping) annotation;
+                                if(request[1].equals(metadata.value()) && request[0].equals(metadata.method())) {
+									try {
+                                        // The call of method.setAccessible(true) allows us to execute the private initNames() method.
+                                        method.setAccessible(true);
 
-                } else if(request[1].contains(RequestURL.SIGNUP.getUrl()) && (request[0].equals("GET") || request[0].equals("POST"))) {
-                    User.create(requestMap);
-                    responseHandler.response302Header(dos, "/");
-                    return;
-
-                } else if(request[1].contains(RequestURL.LOGIN.getUrl()) && request[0].equals("POST")) {
-                    User user = DataBase.findUserById(requestMap.getOrDefault("userId", ""));
-
-                    if(user != null && user.getPassword().equals(requestMap.get("password"))) {
-                        responseHandler.response302Header(dos, "/", "logined=true");
-                        return;
+                                        // object is not an instance of declaring class
+                                        // 인스턴스를 넣어줘야하는데 클래스를 그대로 넣어줘서 생긴 오류
+                                        if (requestMap.isEmpty()) {
+                                            request[1] = (String) method.invoke(requestList);
+                                        } else {
+                                            method.invoke(requestList, cookie, requestMap, dos);
+                                            return;
+                                        }
+									} catch (IllegalAccessException | InvocationTargetException e) {
+										throw new RuntimeException(e);
+									}
+								}
+                            }
+                        }
                     }
-
-                    responseHandler.response302Header(dos, "/user/login_failed.html", "logined=false");
-                    return;
-
-                } else if(request[1].contains(RequestURL.LIST.getUrl()) && request[0].equals("GET")) {
-                    if(cookie.get("logined") == null || cookie.get("logined").equals("false")) {
-                        responseHandler.response302Header(dos, "/user/login.html");
-                    }
-
-                    request[1] = "/user/list.html";
-                    String htmlContent = new String(Files.readAllBytes(new File(moduleName + "/webapp" + request[1]).toPath()));
-                    StringBuilder stringBuilder = new StringBuilder();
-
-                    AtomicInteger index = new AtomicInteger(1);
-                    DataBase.findAll().forEach((k) -> {
-                        int currentIndex = index.getAndIncrement();
-                        stringBuilder.append("""
-								<tr>
-									<th scope="row">%s</th>
-									<td>%s</td>
-									<td>%s</td>
-									<td>%s</td>
-									<td><a href="#" class="btn btn-success" role="button">수정</a></td>
-								</tr>
-							""".formatted(currentIndex, k.getUserId(), k.getName(), URLDecoder.decode(k.getEmail(),
-                            StandardCharsets.UTF_8)));
-                    });
-
-                    // String 객체에서 replace 메소드를 호출하면 원본 문자열이 변경되지 않고, 변경된 새로운 문자열이 반환
-                    htmlContent = htmlContent.replace("<!-- DATA_LIST -->", stringBuilder.toString());
-                    byte[] bytes = htmlContent.getBytes();
-                    responseHandler.response200Header(dos, bytes.length, contentType);
-                    responseHandler.responseBody(dos, bytes);
-                    return;
                 }
             }
 
@@ -145,4 +120,6 @@ public class RequestHandler extends Thread {
             log.error(e.getMessage());
         }
     }
+
+
 }

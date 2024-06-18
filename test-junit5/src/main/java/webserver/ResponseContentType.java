@@ -22,4 +22,8 @@ public enum ResponseContentType {
 			.findFirst()
 			.orElse(null);
 	}
+
+	public String contentType() {
+		return this.contentType;
+	}
 }
