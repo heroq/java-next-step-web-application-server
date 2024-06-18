@@ -28,6 +28,8 @@ public class RequestHandler extends Thread {
     private final Socket connection;
     private final ResponseHandler responseHandler = new ResponseHandler();
 
+    private final String moduleName = "test-junit5";
+
     public RequestHandler(Socket connectionSocket) {
         this.connection = connectionSocket;
 	}
@@ -77,19 +79,11 @@ public class RequestHandler extends Thread {
             }
 
             // 요청에 따른 응답 변경
+            contentType = ResponseContentType.getContentType(header.get("Sec-Fetch-Dest"));
 
-            if(header.get("Sec-Fetch-Dest").equals("style")) {
-                contentType = "text/css";
-
-            } else if(header.get("Sec-Fetch-Dest").equals("script")) {
-                contentType = "text/javascript";
-
-            } else if(header.get("Sec-Fetch-Dest").equals("document")) {
-                contentType = "text/html;charset=utf-8";
-
+            if(header.get("Sec-Fetch-Dest").equals("document")) {
                 Map<String, String> requestMap = HttpRequestUtils.parseQueryString(requestBody);
 
-                System.out.println(RequestURL.INDEX.getUrl());
                 if (request[1].equals(RequestURL.INDEX.getUrl())) {
                     request[1] = "/index.html";
 
@@ -115,7 +109,7 @@ public class RequestHandler extends Thread {
                     }
 
                     request[1] = "/user/list.html";
-                    String htmlContent = new String(Files.readAllBytes(new File("requirements-7/webapp" + request[1]).toPath()));
+                    String htmlContent = new String(Files.readAllBytes(new File(moduleName + "/webapp" + request[1]).toPath()));
                     StringBuilder stringBuilder = new StringBuilder();
 
                     AtomicInteger index = new AtomicInteger(1);
@@ -143,7 +137,7 @@ public class RequestHandler extends Thread {
             }
 
              // 응답
-            File file = new File("requirements-7/webapp" + request[1]);
+            File file = new File(moduleName + "/webapp" + request[1]);
             byte[] bytes = Files.readAllBytes(file.toPath());
             responseHandler.response200Header(dos, bytes.length, contentType);
             responseHandler.responseBody(dos, bytes);
