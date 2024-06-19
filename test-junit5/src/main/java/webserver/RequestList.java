@@ -21,12 +21,13 @@ public class RequestList {
 	@RequestMapping(value = "/", method = "GET")
 	public void index(HashMap<String, String> cookie, HashMap<String, String> requestMap, DataOutputStream dos) {
 		File file = new File(moduleName + "/webapp/index.html");
-		byte[] bytes = null;
+		byte[] bytes;
 		try {
 			bytes = Files.readAllBytes(file.toPath());
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
+
 		responseHandler.response200Header(dos, bytes.length, ResponseContentType.HTML.contentType());
 		responseHandler.responseBody(dos, bytes);
 	}

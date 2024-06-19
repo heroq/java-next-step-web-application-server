@@ -9,8 +9,8 @@ public enum ResponseContentType {
 	WOFF("font", "font/woff"),
 	IMAGE("image", "image/png"),;
 
-	private String secFetchDest;
-	private String contentType;
+	private final String secFetchDest;
+	private final String contentType;
 
 	ResponseContentType(String secFetchDest, String contentType) {
 		this.secFetchDest = secFetchDest;
