@@ -56,11 +56,8 @@ public class RequestHandler extends Thread {
             // 0 METHOD, 1 URL, 2 HTTP VERSION
             String[] request = requestLine.split(" ");
 
-            HashMap<String, String> header = new HashMap<>();
-            getHeader(header, bufferedReader);
-
-            Map<String, String> cookie = new HashMap<>();
-            if(header.get("Cookie") != null) cookie = HttpRequestUtils.parseCookies(header.get("Cookie"));
+            Map<String, String> header = HttpRequestUtils.parseHeader(bufferedReader);
+            Map<String, String> cookie = header.get("Cookie") != null ? HttpRequestUtils.parseCookies(header.get("Cookie")) : new HashMap<>();
 
             if(request[0].equals("GET") && request[1].contains("?")) {
                 requestBody = request[1].split("\\?")[1];
