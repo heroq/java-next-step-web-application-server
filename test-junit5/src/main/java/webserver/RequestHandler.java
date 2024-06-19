@@ -68,13 +68,13 @@ public class RequestHandler extends Thread {
             // 요청에 따른 응답 변경
             contentType = ResponseContentType.getContentType(header.get("Sec-Fetch-Dest"));
 
-            if(contentType.equals(ResponseContentType.HTML.contentType())) {
+            if(contentType.equals(ResponseContentType.HTML.contentType())) { // document 일 경우
                 Map<String, String> requestMap = HttpRequestUtils.parseQueryString(requestBody);
-                for (Method method : RequestList.class.getDeclaredMethods()) {
-                    if (method.isAnnotationPresent(RequestMapping.class)) {
-                        Annotation[] a = method.getDeclaredAnnotations();
+                for (Method method : RequestList.class.getDeclaredMethods()) { // Method 추출
+                    if (method.isAnnotationPresent(RequestMapping.class)) { // 어노테이션 확인
+                        Annotation[] a = method.getDeclaredAnnotations(); // Method 어노테이션 추출
                         for(Annotation annotation : a) {
-                            if(annotation instanceof RequestMapping) {
+                            if(annotation instanceof RequestMapping) { // 어노테이션 확인
                                 RequestMapping metadata = (RequestMapping) annotation;
                                 if(request[1].equals(metadata.value()) && request[0].equals(metadata.method())) {
 									try {
