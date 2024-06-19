@@ -33,14 +33,6 @@ public class RequestHandler extends Thread {
         this.connection = connectionSocket;
 	}
 
-    public void getHeader(HashMap<String, String> header, BufferedReader bufferedReader) throws IOException {
-        String line;
-        while(!(line = bufferedReader.readLine()).isEmpty()) {
-            HttpRequestUtils.Pair pair = HttpRequestUtils.parseHeader(line);
-            header.put(pair.getKey(), pair.getValue());
-        }
-    }
-
     public void run() {
         log.debug("New Client Connect! Connected IP : {}, Port : {}", connection.getInetAddress(), connection.getPort());
 
@@ -65,12 +57,12 @@ public class RequestHandler extends Thread {
             } else if(request[0].equals("POST")) {
                 // Content-Length 헤더를 통해 본문의 길이를 파악
                 String contentLengthValue = header.get("Content-Length");
-                if (contentLengthValue != null) {
-                    int contentLength = Integer.parseInt(contentLengthValue);
-                    char[] body = new char[contentLength];
-                    bufferedReader.read(body, 0, contentLength);
-                    requestBody = new String(body);
-                }
+                if (contentLengthValue == null) return;
+
+                int contentLength = Integer.parseInt(contentLengthValue);
+                char[] body = new char[contentLength];
+                bufferedReader.read(body, 0, contentLength);
+                requestBody = new String(body);
             }
 
             // 요청에 따른 응답 변경
