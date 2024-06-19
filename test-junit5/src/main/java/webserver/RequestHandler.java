@@ -97,12 +97,11 @@ public class RequestHandler extends Thread {
                                         // 인스턴스를 넣어줘야하는데 클래스를 그대로 넣어줘서 생긴 오류
 
                                         // /user/list를 현재 제대로 체크 하지 못하기때문에 수정 필요
-                                        if (requestMap.isEmpty()) {
-                                            request[1] = (String) method.invoke(requestList);
-                                        } else {
-                                            method.invoke(requestList, cookie, requestMap, dos);
-                                            return;
-                                        }
+                                        // GET이고, requestBody 없고
+
+                                        method.invoke(requestList, cookie, requestMap, dos);
+                                        return;
+
 									} catch (IllegalAccessException | InvocationTargetException e) {
 										throw new RuntimeException(e);
 									}

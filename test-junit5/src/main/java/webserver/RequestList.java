@@ -19,8 +19,16 @@ public class RequestList {
 	private final String moduleName = "test-junit5";
 
 	@RequestMapping(value = "/", method = "GET")
-	public String index() {
-		return "/index.html";
+	public void index(HashMap<String, String> cookie, HashMap<String, String> requestMap, DataOutputStream dos) {
+		File file = new File(moduleName + "/webapp/index.html");
+		byte[] bytes = null;
+		try {
+			bytes = Files.readAllBytes(file.toPath());
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+		responseHandler.response200Header(dos, bytes.length, ResponseContentType.HTML.contentType());
+		responseHandler.responseBody(dos, bytes);
 	}
 
 	@RequestMapping(value = "/user/create", method = "POST")

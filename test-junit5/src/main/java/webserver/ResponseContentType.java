@@ -5,7 +5,9 @@ import java.util.Arrays;
 public enum ResponseContentType {
 	HTML("document", "text/html;charset=utf-8"),
 	CSS("style", "text/css"),
-	SCRIPT("script", "text/javascript");
+	SCRIPT("script", "text/javascript"),
+	WOFF("font", "font/woff"),
+	IMAGE("image", "image/png"),;
 
 	private String secFetchDest;
 	private String contentType;
