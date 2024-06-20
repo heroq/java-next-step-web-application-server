@@ -25,7 +25,7 @@ public class RequestHandler extends Thread {
 
     private final Socket connection;
     private final ResponseHandler responseHandler = new ResponseHandler();
-    private final RequestList requestList = new RequestList();
+    private final RequestList requestList = new RequestList(responseHandler);
 
     private final String moduleName = "test-junit5";
 

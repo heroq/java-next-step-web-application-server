@@ -15,8 +15,12 @@ import model.User;
 
 public class RequestList {
 
-	private final ResponseHandler responseHandler = new ResponseHandler();
+	private final ResponseHandler responseHandler;
 	private final String moduleName = "test-junit5";
+
+	public RequestList(ResponseHandler responseHandler) {
+		this.responseHandler = new ResponseHandler();
+	}
 
 	@RequestMapping(value = "/", method = "GET")
 	public void index(HashMap<String, String> cookie, HashMap<String, String> requestMap, DataOutputStream dos) {
