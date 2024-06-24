@@ -71,3 +71,9 @@
 * [JUnit5 No matching tests found in any candidate test task. 오류](https://www.notion.so/hhero/JUnit5-No-matching-tests-found-in-any-candidate-test-task-ef11a31aec3640d2bba087e15ba1992a?pvs=4)
 * [JUnit5 assert 사용](https://www.notion.so/hhero/JUnit5-assert-01d818e241bd402e943957361ba6217b?pvs=4)
 * [gradle useJUnitPlatform은 무슨 역할을 하나요 ?](https://www.notion.so/hhero/gradle-useJUnitPlatform-5606d96f6ea0455b9ba9a049ba5a0dea?pvs=4)
+
+### 스터디 정리
+* [어노테이션, 리플랙션 정리](https://www.notion.so/hhero/47a1437cd9144259b583d2e6f2e7d6ce?pvs=4)
+* [ServerSocket 접근 시 Client IP, Port](https://www.notion.so/hhero/ServerSocket-Client-IP-Port-86a48e60641a417083fc522b9355b3d2?pvs=4)
+* [String, StringBuffer 차이](https://www.notion.so/hhero/String-StringBuffer-61d842e5b2de4dec91f2637848412bb7?pvs=4)
+* [HTTP 통신과 소켓 통신의 차이](https://www.notion.so/hhero/HTTP-39c54720da4e4e668472bf8182d9d5dd?pvs=4)
