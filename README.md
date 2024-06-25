@@ -77,3 +77,6 @@
 * [ServerSocket 접근 시 Client IP, Port](https://www.notion.so/hhero/ServerSocket-Client-IP-Port-86a48e60641a417083fc522b9355b3d2?pvs=4)
 * [String, StringBuffer 차이](https://www.notion.so/hhero/String-StringBuffer-61d842e5b2de4dec91f2637848412bb7?pvs=4)
 * [HTTP 통신과 소켓 통신의 차이](https://www.notion.so/hhero/HTTP-39c54720da4e4e668472bf8182d9d5dd?pvs=4)
+* [Openfeign, RestTemplate 차이](https://www.notion.so/hhero/Openfeign-RestTemplate-74f94e23eff34b13829fb8cca02a627a?pvs=4)
+* [자바 스레드 상호 배제 동기화 기법 확인](https://www.notion.so/hhero/337955132f0f4e67957e8e78eef8f955?pvs=4)
+* [스레드의 start()와 run()](https://www.notion.so/hhero/start-run-b7f0274f861b451491b8116abcd223af?pvs=4)
