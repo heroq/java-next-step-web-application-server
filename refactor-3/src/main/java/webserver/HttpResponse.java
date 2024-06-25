@@ -22,17 +22,17 @@ public class HttpResponse {
 		this.dos = new DataOutputStream(dos);
 	}
 
-	// forward (직접 읽어 응답)
-	// sendRedirect (리다이렉션)
-	// 응답 데이터 처리 중복 제거
-	// 헤더 정보는 Map으로 관리
-
 	public void addHeader(String key, String value) {
-		header.put(key,	value);
+		header.put(key, value);
 	}
 
 	public void forward(String url) throws IOException {
 		byte[] body = Files.readAllBytes(new File("./webapp/" + url).toPath());
+		response200Header(dos, body.length);
+		responseBody(dos, body);
+	}
+
+	public void forward(byte[] body) {
 		response200Header(dos, body.length);
 		responseBody(dos, body);
 	}
