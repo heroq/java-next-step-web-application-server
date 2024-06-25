@@ -78,6 +78,7 @@
 * [JUnit5 No matching tests found in any candidate test task. 오류](https://www.notion.so/hhero/JUnit5-No-matching-tests-found-in-any-candidate-test-task-ef11a31aec3640d2bba087e15ba1992a?pvs=4)
 * [JUnit5 assert 사용](https://www.notion.so/hhero/JUnit5-assert-01d818e241bd402e943957361ba6217b?pvs=4)
 * [gradle useJUnitPlatform은 무슨 역할을 하나요 ?](https://www.notion.so/hhero/gradle-useJUnitPlatform-5606d96f6ea0455b9ba9a049ba5a0dea?pvs=4)
+
 ### 리팩터링 1 (refactor-1) - 요청 처리 분리
 
 ### 리팩터링 2 (refactor-2) - 응답 처리 분리
