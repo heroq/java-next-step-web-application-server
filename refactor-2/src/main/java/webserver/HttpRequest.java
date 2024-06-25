@@ -8,10 +8,14 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import util.HttpRequestUtils;
 import util.HttpRequestUtils.Pair;
 
 public class HttpRequest {
+	private static final Logger log = LoggerFactory.getLogger(HttpRequest.class);
 	InputStream inputStream;
 
 	private String method;
@@ -51,7 +55,7 @@ public class HttpRequest {
 			}
 
 		} catch (IOException e) {
-			throw new RuntimeException(e);
+			log.error(e.getMessage());
 		}
 	}
 
