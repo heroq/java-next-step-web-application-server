@@ -22,6 +22,7 @@ public class HttpRequest {
 	private String path;
 	private Map<String, String> header;
 	private Map<String, String> parameter;
+	private Map<String, String> cookie;
 
 	HttpRequest(InputStream inputStream) {
 		this.inputStream = inputStream;
@@ -47,6 +48,10 @@ public class HttpRequest {
 				header.put(pair.getKey(), pair.getValue());
 			}
 
+			if(header.get("Cookie") != null) {
+				cookie = HttpRequestUtils.parseCookies(header.get("Cookie"));
+			}
+
 			if(method.equals("POST")) {
 				int contentLength = Integer.parseInt(header.get("Content-Length"));
 				char[] body = new char[contentLength];
@@ -62,15 +67,11 @@ public class HttpRequest {
 	public String getParameter(String name) {
 		return parameter.get(name);
 	}
-
-	public String getHeader(String key) {
-		return header.get(key);
-	}
-
+	public String getCookie(String name) {return cookie.get(name); }
+	public String getHeader(String key) { return header.get(key); }
 	public String getMethod() {
 		return method;
 	}
-
 	public String getPath() {
 		return path;
 	}

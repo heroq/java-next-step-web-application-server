@@ -27,7 +27,15 @@ public class HttpResponse {
 	}
 
 	public void forward(String url) throws IOException {
-		byte[] body = Files.readAllBytes(new File("./webapp/" + url).toPath());
+		byte[] body = Files.readAllBytes(new File("refactor-3/webapp/" + url).toPath());
+		addHeader("Content-Type", "text/html; charset=utf-8");
+		response200Header(dos, body.length);
+		responseBody(dos, body);
+	}
+
+	public void cssForward(String url) throws IOException {
+		byte[] body = Files.readAllBytes(new File("refactor-3/webapp/" + url).toPath());
+		addHeader("Content-Type", "text/css;charset=utf-8\r\n");
 		response200Header(dos, body.length);
 		responseBody(dos, body);
 	}
@@ -44,7 +52,6 @@ public class HttpResponse {
 	private void response200Header(DataOutputStream dos, int lengthOfBodyContent) {
 		try {
 			dos.writeBytes("HTTP/1.1 200 OK \r\n");
-			dos.writeBytes("Content-Type: text/html;charset=utf-8\r\n");
 			dos.writeBytes("Content-Length: " + lengthOfBodyContent + "\r\n");
 			header.forEach((k,v) -> {
 				try {

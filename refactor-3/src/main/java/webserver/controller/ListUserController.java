@@ -11,6 +11,8 @@ public class ListUserController extends AbstractController {
 
 	@Override
 	public void doGet(HttpRequest httpRequest, HttpResponse httpResponse) {
+
+		System.out.println(logined(httpRequest));
 		if (!logined(httpRequest)) {
 			httpResponse.sendRedirect("/user/login.html");
 			return;
@@ -37,6 +39,6 @@ public class ListUserController extends AbstractController {
 	}
 
 	private boolean logined(HttpRequest httpRequest) {
-		return httpRequest.getHeader("Cookie").contains("logined=true");
+		return httpRequest.getCookie("logined").equals("true");
 	}
 }
