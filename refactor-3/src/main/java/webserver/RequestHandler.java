@@ -29,7 +29,10 @@ public class RequestHandler extends Thread {
 
             String url = httpRequest.getPath();
 
-            if(controllers.get(url) != null) controllers.get(url).service(httpRequest, httpResponse);
+            if(controllers.get(url) != null) {
+                controllers.get(url).service(httpRequest, httpResponse);
+                return;
+            }
 
             if (url.endsWith(".css")) {
                 httpResponse.cssForward(url);

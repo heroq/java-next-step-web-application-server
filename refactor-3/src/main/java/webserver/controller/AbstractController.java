@@ -18,9 +18,9 @@ public abstract class AbstractController implements Controller {
 
 	@Override
 	public void service(HttpRequest httpRequest, HttpResponse httpResponse) {
-		if(httpRequest.getMethod().equals("GET")) {
+		if(!httpRequest.getMethod().isPost()) {
 			controllers.get(httpRequest.getPath()).doGet(httpRequest, httpResponse);
-		} else if(httpRequest.getMethod().equals("POST")) {
+		} else {
 			controllers.get(httpRequest.getPath()).doPost(httpRequest, httpResponse);
 		}
 	};

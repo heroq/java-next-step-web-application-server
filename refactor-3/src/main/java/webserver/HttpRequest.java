@@ -18,7 +18,7 @@ public class HttpRequest {
 	private static final Logger log = LoggerFactory.getLogger(HttpRequest.class);
 	InputStream inputStream;
 
-	private String method;
+	private HttpMethod method;
 	private String path;
 	private Map<String, String> header;
 	private Map<String, String> parameter;
@@ -34,11 +34,14 @@ public class HttpRequest {
 				return;
 			}
 
+
+
 			String[] requestLine = line.split(" ");
-			method = requestLine[0];
+			method = HttpMethod.valueOf(requestLine[0]);
+
 			path = requestLine[1];
 
-			if(method.equals("GET") && path.contains("?")) {
+			if(method == HttpMethod.GET && path.contains("?")) {
 				parameter = HttpRequestUtils.parseQueryString(path.split("\\?")[1]);
 				path = path.split("\\?")[0];
 			}
@@ -52,7 +55,7 @@ public class HttpRequest {
 				cookie = HttpRequestUtils.parseCookies(header.get("Cookie"));
 			}
 
-			if(method.equals("POST")) {
+			if(method == HttpMethod.POST) {
 				int contentLength = Integer.parseInt(header.get("Content-Length"));
 				char[] body = new char[contentLength];
 				br.read(body, 0, contentLength);
@@ -67,9 +70,13 @@ public class HttpRequest {
 	public String getParameter(String name) {
 		return parameter.get(name);
 	}
-	public String getCookie(String name) {return cookie.get(name); }
-	public String getHeader(String key) { return header.get(key); }
-	public String getMethod() {
+	public String getCookie(String name) {
+		return cookie.get(name);
+	}
+	public String getHeader(String key) {
+		return header.get(key);
+	}
+	public HttpMethod getMethod() {
 		return method;
 	}
 	public String getPath() {
