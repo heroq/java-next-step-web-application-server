@@ -16,16 +16,11 @@ public class HttpResponse {
 	private static final Logger log = LoggerFactory.getLogger(HttpResponse.class);
 
 	DataOutputStream dos;
-	private Map<String, String> header = new HashMap<String, String>();
+	private Map<String, String> header = new HashMap<>();
 
 	HttpResponse(OutputStream dos) {
 		this.dos = new DataOutputStream(dos);
 	}
-
-	// forward (직접 읽어 응답)
-	// sendRedirect (리다이렉션)
-	// 응답 데이터 처리 중복 제거
-	// 헤더 정보는 Map으로 관리
 
 	public void addHeader(String key, String value) {
 		header.put(key,	value);
