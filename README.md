@@ -86,3 +86,4 @@
 ### 리팩터링 2 (refactor-2) - 응답 처리 분리
 
 ### 리팩터링 3 (refactor-3) - 다형성 활용하여 요청 분기 처리 제거
+* [자바 다형성이란?](https://www.notion.so/hhero/a4ba3bc2d84b427f8f5124eaa863c3dd?pvs=4)
