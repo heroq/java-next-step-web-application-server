@@ -39,6 +39,6 @@ public class ListUserController extends AbstractController {
 	}
 
 	private boolean logined(HttpRequest httpRequest) {
-		return httpRequest.getCookie("logined").equals("true");
+		return httpRequest.getCookie("logined") != null && httpRequest.getCookie("logined").equals("true");
 	}
 }

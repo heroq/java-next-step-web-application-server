@@ -35,7 +35,7 @@ class HttpRequestTest {
 	void post() throws FileNotFoundException {
 		InputStream inputStream = new FileInputStream(testDirectory + "/HTTP_POST.txt");
 		HttpRequest httpRequest = new HttpRequest(inputStream);
-		assertEquals("POST", httpRequest.getMethod());
+		assertEquals(HttpMethod.POST, httpRequest.getMethod());
 		assertEquals("/user/create", httpRequest.getPath());
 		assertEquals("javajigi", httpRequest.getParameter("userId"));
 	}
