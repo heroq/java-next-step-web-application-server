@@ -1,6 +1,8 @@
 package webserver;
 
 import java.io.File;
+
+import org.apache.catalina.Context;
 import org.apache.catalina.startup.Tomcat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +25,10 @@ public class WebServerLauncher {
         tomcat.setPort(port);
         tomcat.getConnector();
 
-        tomcat.addWebapp("/", new File(webAppDir).getAbsolutePath());
+        Context ctx = tomcat.addWebapp("/", new File(webAppDir).getAbsolutePath());
+        Tomcat.addServlet(ctx, "helloWorld", new HelloWorldController());
+        ctx.addServletMappingDecoded("/hello", "helloWorld");
+
         tomcat.start();
         tomcat.getServer().await();
     }
