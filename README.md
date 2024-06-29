@@ -79,11 +79,9 @@
 * [JUnit5 assert 사용](https://www.notion.so/hhero/JUnit5-assert-01d818e241bd402e943957361ba6217b?pvs=4)
 * [gradle useJUnitPlatform은 무슨 역할을 하나요 ?](https://www.notion.so/hhero/gradle-useJUnitPlatform-5606d96f6ea0455b9ba9a049ba5a0dea?pvs=4)
 
-### 리팩터링 1 (refactor-1) - 요청 처리 분리
+### 리팩터링 1 (refactor-1) - 요청 처리 분리, 리팩터링 2 (refactor-2) - 응답 처리 분리
 * [리팩터링이란?](https://www.notion.so/hhero/f83191bcfa6845b694def9d993e9e82c?pvs=4)
 * [리팩터링을 할 때 가장 많이 사용하는 기술은?](https://www.notion.so/hhero/db3a5d14ad564599970c3de5274817f7?pvs=4)
-
-### 리팩터링 2 (refactor-2) - 응답 처리 분리
 
 ### 리팩터링 3 (refactor-3) - 다형성 활용하여 요청 분기 처리 제거
 * [자바 다형성이란?](https://www.notion.so/hhero/a4ba3bc2d84b427f8f5124eaa863c3dd?pvs=4)
