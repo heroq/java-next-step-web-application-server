@@ -87,3 +87,6 @@
 
 ### 리팩터링 3 (refactor-3) - 다형성 활용하여 요청 분기 처리 제거
 * [자바 다형성이란?](https://www.notion.so/hhero/a4ba3bc2d84b427f8f5124eaa863c3dd?pvs=4)
+
+### 톰캣(WAS) 1 (tomcat-1) - Tomcat 의존 받아서 Hello World 띄우기
+* [톰캣 8 이전, 이후 서블릿 등록 차이](https://www.notion.so/hhero/8-b2526b1d049648bebb4c89e9647c1a51?pvs=4)
