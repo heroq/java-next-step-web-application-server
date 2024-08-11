@@ -1,10 +1,10 @@
 package model;
 
 public class User {
-    private final String userId;
-    private final String password;
-    private final String name;
-    private final String email;
+    private String userId;
+    private String password;
+    private String name;
+    private String email;
 
     public User(String userId, String password, String name, String email) {
         this.userId = userId;
@@ -16,18 +16,22 @@ public class User {
     public String getUserId() {
         return userId;
     }
+    public void setUserId(String userId) {}
 
     public String getPassword() {
         return password;
     }
+    public void setPassword(String password) {}
 
     public String getName() {
         return name;
     }
+    public void setName(String name) {}
 
     public String getEmail() {
         return email;
     }
+    public void setEmail(String email) {}
 
     @Override
     public String toString() {
