@@ -15,6 +15,11 @@ import db.DataBase;
 public class ListUserServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(request.getSession().getAttribute("user") == null) {
+			response.sendRedirect("/user/login.jsp");
+			return;
+		}
+
 		request.setAttribute("users", DataBase.findAll());
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/user/list.jsp");
 		dispatcher.forward(request, response);

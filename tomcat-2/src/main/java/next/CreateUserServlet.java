@@ -21,6 +21,6 @@ public class CreateUserServlet extends HttpServlet {
 			request.getParameter("name"),
 			request.getParameter("email"));
 		DataBase.addUser(user);
-		response.sendRedirect("/user/list");
+		response.sendRedirect("/user/login.jsp");
 	}
 }
