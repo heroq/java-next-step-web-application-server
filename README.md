@@ -88,3 +88,6 @@
 
 ### 톰캣(WAS) 1 (tomcat-1) - Tomcat 의존 받아서 Hello World 띄우기
 * [톰캣 8 이전, 이후 서블릿 등록 차이](https://www.notion.so/hhero/8-b2526b1d049648bebb4c89e9647c1a51?pvs=4)
+
+### 톰캣(WAS) 2 (tomcat-2) - Tomcat 수정 기능, 로그인, 목록, 세션
+
