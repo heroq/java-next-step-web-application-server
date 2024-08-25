@@ -23,7 +23,7 @@ public class LoginUserServlet extends HttpServlet {
 		if(loginResult) {
 			httpSession.setAttribute("user", user);
 		} else {
-			httpSession.setAttribute("user", null);
+			httpSession.removeAttribute("user");
 		}
 
 		response.sendRedirect(loginResult ? "/" : "/user/login_failed.jsp");
