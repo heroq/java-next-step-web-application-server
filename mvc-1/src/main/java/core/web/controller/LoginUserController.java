@@ -1,4 +1,4 @@
-package next;
+package core.web.controller;
 
 import java.io.IOException;
 
@@ -9,13 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import core.web.mvc.Controller;
 import db.DataBase;
 import model.User;
 
-@WebServlet("/user/login")
-public class LoginUserServlet extends HttpServlet {
+public class LoginUserController implements Controller {
+
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String excute(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession httpSession = request.getSession();
 		User user = DataBase.findUserById(request.getParameter("userId"));
 
@@ -26,6 +27,6 @@ public class LoginUserServlet extends HttpServlet {
 			httpSession.removeAttribute("user");
 		}
 
-		response.sendRedirect(loginResult ? "/" : "/user/login_failed.jsp");
+		return loginResult ? "/" : "/user/login_failed.jsp";
 	}
 }

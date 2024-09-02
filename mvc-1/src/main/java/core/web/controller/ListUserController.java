@@ -1,4 +1,4 @@
-package next;
+package core.web.controller;
 
 import java.io.IOException;
 
@@ -9,19 +9,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import core.web.mvc.Controller;
 import db.DataBase;
 
-@WebServlet("/user/list")
-public class ListUserServlet extends HttpServlet {
+public class ListUserController implements Controller {
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String excute(HttpServletRequest request, HttpServletResponse response) {
 		if(request.getSession().getAttribute("user") == null) {
-			response.sendRedirect("/user/login.jsp");
-			return;
+			return "redirect:/user/login.jsp";
 		}
-
 		request.setAttribute("users", DataBase.findAll());
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/user/list.jsp");
-		dispatcher.forward(request, response);
+		return "/user/list.jsp";
 	}
 }

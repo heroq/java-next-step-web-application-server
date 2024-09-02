@@ -32,7 +32,7 @@ public class ResourceFilter implements Filter {
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		requestDispatcher = filterConfig.getServletContext().getRequestDispatcher("default");
+		this.requestDispatcher = filterConfig.getServletContext().getNamedDispatcher("default");
 	}
 
 	@Override
@@ -41,8 +41,6 @@ public class ResourceFilter implements Filter {
 		ServletException {
 
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
-
-		// contextPath 제외한 순수한 서블릿 결과
 		String path = httpRequest.getRequestURI().substring(httpRequest.getContextPath().length());
 
 		if(isResourceUrl(path)) {
