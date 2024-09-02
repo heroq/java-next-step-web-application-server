@@ -98,3 +98,4 @@
 * [RequestDispatcher, FilterConfig에 대해 설명해주세요](https://www.notion.so/hhero/RequestDispatcher-FilterConfig-927a53a056f74bacabe32671aceabd5d?pvs=4)
 * [getRequestURI()와 getContextPath()의 차이점은 무엇인가요](https://www.notion.so/hhero/getRequestURI-getContextPath-e2c022ce21ca46d4ac0f6bfe5eb2c9e7?pvs=4)
 * [Forward, doFilter 설명](https://www.notion.so/hhero/Forward-doFilter-8b9fbe72300d4c15b6d4801579b63e07?pvs=4)
+* [@WebServelt의 name을 filterConfig.getServletContext().getNamedDispatcher에서 가져 올 경우](https://www.notion.so/hhero/WebServelt-name-filterConfig-getServletContext-getNamedDispatcher-17242ce00b4245cf95e63939874a1017?pvs=4)
