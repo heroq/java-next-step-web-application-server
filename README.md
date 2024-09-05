@@ -104,3 +104,4 @@
 ### mvc-2: MVC 프레임워크 구현 2단계
 * [interface를 abstract가 implements하면은 무조건 override를 안해도 되나요 ?](https://www.notion.so/hhero/interface-abstract-implements-override-47e27bb221bd4d189641c3457d63e1aa?pvs=4)
 * [abstract에서 interface를 implement 했는데 class 구현 시 어떻게 되는건가요 ?](https://www.notion.so/hhero/abstract-interface-implement-class-9fc0209852704ddf95e7febdf8cc8740?pvs=4)
+* [톰캣에서 html을 무조건 jsp로 파싱을 시도 하는거라면 jsp로 기본값으로 설정이 되어 있는거죠 ?](https://www.notion.so/hhero/html-jsp-jsp-bca88816f3e84406a2133f32318826f2?pvs=4)

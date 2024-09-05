@@ -16,7 +16,7 @@ public class RequestMapping {
 
 	void init() {
 		controllerMap.put("/", new FrontController("/index.jsp"));
-		controllerMap.put("/users/form", new FrontController("/user/form.jsp"));
+		controllerMap.put("/users/form", new FrontController("/user/form.html"));
 		controllerMap.put("/users/loginForm", new FrontController("/user/login.jsp"));
 		controllerMap.put("/users/create", new CreateUserController());
 		controllerMap.put("/users/updateForm", new UpdateUserFormController());
