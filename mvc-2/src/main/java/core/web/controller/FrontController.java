@@ -4,10 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import core.web.mvc.AbstractController;
-import core.web.mvc.Controller;
 import core.web.mvc.ModelAndView;
-import core.web.mvc.View;
-import core.web.view.JspView;
 
 public class FrontController extends AbstractController {
 

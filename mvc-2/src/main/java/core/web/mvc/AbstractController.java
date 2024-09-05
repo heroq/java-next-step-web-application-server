@@ -1,10 +1,5 @@
 package core.web.mvc;
 
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import core.web.view.JsonView;
 import core.web.view.JspView;
 

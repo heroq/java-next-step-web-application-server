@@ -1,7 +1,6 @@
 package core.web.view;
 
 import java.io.IOException;
-import java.util.Enumeration;
 import java.util.Map;
 import java.util.Set;
 
